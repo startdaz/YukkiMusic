@@ -24,45 +24,12 @@ def start_pannel(_):
             InlineKeyboardButton(text=_["S_B_2"], callback_data="settings_helper"),
         ],
     ]
-    if SUPPORT_CHANNEL and SUPPORT_GROUP:
-        buttons.append(
-            [
-                InlineKeyboardButton(text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"),
-                InlineKeyboardButton(text=_["S_B_3"], url=f"{SUPPORT_GROUP}"),
-            ]
-        )
-    else:
-        if SUPPORT_CHANNEL:
-            buttons.append(
-                [InlineKeyboardButton(text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}")]
-            )
-        if SUPPORT_GROUP:
-            buttons.append(
-                [InlineKeyboardButton(text=_["S_B_3"], url=f"{SUPPORT_GROUP}")]
-            )
     return buttons
 
-
-def private_panel(_, BOT_USERNAME, OWNER: bool | int = None):
+def private_panel(_, BOT_USERNAME, OWNER: int = None):
     buttons = [
         [InlineKeyboardButton(text=_["S_B_8"], callback_data="settings_back_helper")]
     ]
-    if SUPPORT_CHANNEL and SUPPORT_GROUP:
-        buttons.append(
-            [
-                InlineKeyboardButton(text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}"),
-                InlineKeyboardButton(text=_["S_B_3"], url=f"{SUPPORT_GROUP}"),
-            ]
-        )
-    else:
-        if SUPPORT_CHANNEL:
-            buttons.append(
-                [InlineKeyboardButton(text=_["S_B_4"], url=f"{SUPPORT_CHANNEL}")]
-            )
-        if SUPPORT_GROUP:
-            buttons.append(
-                [InlineKeyboardButton(text=_["S_B_3"], url=f"{SUPPORT_GROUP}")]
-            )
     buttons.append(
         [
             InlineKeyboardButton(
@@ -71,26 +38,11 @@ def private_panel(_, BOT_USERNAME, OWNER: bool | int = None):
             )
         ]
     )
-    if GITHUB_REPO and OWNER:
+    if OWNER:
         buttons.append(
             [
                 InlineKeyboardButton(text=_["S_B_7"], user_id=OWNER),
-                InlineKeyboardButton(text=_["S_B_6"], url=f"{GITHUB_REPO}"),
+                InlineKeyboardButton(text=_["ST_B_6"], callback_data="LG"),
             ]
         )
-    else:
-        if GITHUB_REPO:
-            buttons.append(
-                [
-                    InlineKeyboardButton(text=_["S_B_6"], url=f"{GITHUB_REPO}"),
-                ]
-            )
-
-        if OWNER:
-            buttons.append(
-                [
-                    InlineKeyboardButton(text=_["S_B_7"], user_id=OWNER),
-                ]
-            )
-    buttons.append([InlineKeyboardButton(text=_["ST_B_6"], callback_data="LG")])
     return buttons
